@@ -1,8 +1,8 @@
 # tdd-fundamentals-in-typescript
 
-### So , what is Test Driven Development ? 
+### So , what is this Kata about ?
 
-![TDD](pictures/tdd.jpg 'test driven development')
+![Character Copy](./pictures/character-copy-kata.png 'Character Copy')
 
 ---
 
