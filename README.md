@@ -8,6 +8,7 @@
 #### 3 Types of Test Doubles :
 
 1. **Fakes**
+    ![Fake](./pictures/fake.png 'Character Copy')
 
 1. **Stubs**
 
