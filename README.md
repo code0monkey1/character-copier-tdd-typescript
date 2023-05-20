@@ -5,8 +5,13 @@
 ![Character Copy](./pictures/character-copy-kata.png 'Character Copy')
 
 ---
+#### 3 Types of Test Doubles :
 
-[TDD Exercise Book](./data/TDD-Fundamentals-in-TypeScript.pdf)
+1. **Fakes**
+
+1. **Stubs**
+
+1. **Mocks**
 
 ---
 
