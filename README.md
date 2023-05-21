@@ -11,6 +11,7 @@
     ![Fake](./pictures/fake.png 'Character Copy')
 
 1. **Stubs**
+  ![Stub](./pictures/stub.png 'Character Copy')
 
 1. **Mocks**
 
