@@ -1,6 +1,15 @@
 class Copier{
    
-    constructor( readonly src:Source,readonly dest:Destination){}
+  constructor( private readonly src:Source,private readonly dest:Destination){}
+
+
+  get source():Source{
+    return this.src
+  }
+
+  get destination(): Destination{
+    return this.dest
+  }
 
 }
 
@@ -11,7 +20,9 @@ interface Source{
 
 interface Destination{
 
-  writeChar:()=>string;
+    writeChar:()=>string;
+
 }
+
 
 export default Copier;
