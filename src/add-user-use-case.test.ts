@@ -20,17 +20,20 @@ describe('add-user-use-case',()=>{
             
         //    emailAddress=>emails.push(emailAddress)
         // )
-
-        // const sut = new AddUserUseCase(emailService)
-           
-
-        class UserEmailService implements EmailService{
+            class UserEmailService implements EmailService{
           
           sendWelcomeLetter(emailAddress: string): void {
             throw new Error("Method not implemented.")
           }
           
         }
+      
+        const userEmailService = new UserEmailService();
+
+        const sut = new AddUserUseCase(userEmailService)
+           
+
+    
       })
    })
 })
