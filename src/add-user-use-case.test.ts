@@ -35,6 +35,7 @@ describe('add-user-use-case',()=>{
         sut.execute(userRequest)
         
         expect(mockEmailService.wasSendWelcomeLetterCalled).toBeTruthy()
+        expect(emails.includes(userRequest.emailAddress))
       
       })
    })
