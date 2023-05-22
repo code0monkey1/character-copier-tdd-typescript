@@ -9,7 +9,7 @@ describe('add-user-use-case',()=>{
         expect(AddUserUseCase).toBeInstanceOf(Function)
       })
 
-      test('does exist',()=>{
+      test('should send welcome letter',()=>{
         const userRequest={
           emailAddress:"chiranjeev@gmail.com",
           userName:"Chiranjeev"
@@ -23,6 +23,14 @@ describe('add-user-use-case',()=>{
 
         // const sut = new AddUserUseCase(emailService)
            
+
+        class UserEmailService implements EmailService{
+          
+          sendWelcomeLetter(emailAddress: string): void {
+            throw new Error("Method not implemented.")
+          }
+          
+        }
       })
    })
 })
