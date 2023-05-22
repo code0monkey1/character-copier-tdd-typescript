@@ -14,16 +14,13 @@ describe('add-user-use-case',()=>{
           emailAddress:"chiranjeev@gmail.com",
           userName:"Chiranjeev"
         }
-        // const emails:string[]=[]
+  
+        const emails:string[]=[]
 
-        // const emailService:EmailService=jest.fn(
-            
-        //    emailAddress=>emails.push(emailAddress)
-        // )
             class UserEmailService implements EmailService{
           
           sendWelcomeLetter(emailAddress: string): void {
-            throw new Error("Method not implemented.")
+            emails.push(emailAddress)
           }
           
         }
@@ -31,9 +28,11 @@ describe('add-user-use-case',()=>{
         const userEmailService = new UserEmailService();
 
         const sut = new AddUserUseCase(userEmailService)
-           
+        
+        sut.execute(userRequest)
 
-    
+        expect(emails).toContain(userRequest.emailAddress)
+         
       })
    })
 })
