@@ -17,19 +17,23 @@ describe('add-user-use-case',()=>{
   
         const emails:string[]=[]
 
-            class UserEmailService implements EmailService{
-          
+            class MockEmailService implements EmailService{
+
+          public  wasSendWelcomeLetterCalled:boolean=false;
+
           sendWelcomeLetter(emailAddress: string): void {
+            this.wasSendWelcomeLetterCalled=true;
             emails.push(emailAddress)
           }
           
         }
       
-        const userEmailService = new UserEmailService();
+        const mockEmailService = new MockEmailService();
 
-        const sut = new AddUserUseCase(userEmailService)
+        const sut = new AddUserUseCase(mockEmailService)
         
         sut.execute(userRequest)
+        
 
         expect(emails).toContain(userRequest.emailAddress)
          
