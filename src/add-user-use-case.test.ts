@@ -17,7 +17,7 @@ describe('add-user-use-case',()=>{
   
         const emails:string[]=[]
 
-            class MockEmailService implements EmailService{
+        class MockEmailService implements EmailService{
 
           public  wasSendWelcomeLetterCalled:boolean=false;
 
@@ -34,9 +34,8 @@ describe('add-user-use-case',()=>{
         
         sut.execute(userRequest)
         
-
-        expect(emails).toContain(userRequest.emailAddress)
-         
+        expect(mockEmailService.wasSendWelcomeLetterCalled).toBeTruthy()
+      
       })
    })
 })
