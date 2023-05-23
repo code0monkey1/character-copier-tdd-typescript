@@ -9,22 +9,26 @@ describe("Resent Password",()=>{
    })
 
    test("should sent message to correct email address",()=>{
-
-      const emailsSent:EmailMessage[]=[]
-
-      const emailService:EmailService = {
+     
+       //Arrange
+        const emailsSent:EmailMessage[]=[]
+        
+        const emailService:EmailService = {
           sendMessage:jest.fn(
             emailMessage=>emailsSent.push(emailMessage)
-          )
-      }
+            )
+           }
+          
+        const sut = new ResetPasswordUseCase(emailService)
+        
+          //Act
+          sut.execute("mail@gmail.com")
+        
+          //Assert
+         expect(emailsSent.map(email=>email.mailTo)).toContain("mail@gmail.com")
 
-       const sut = new ResetPasswordUseCase(emailService)
 
-       sut.execute("mail@gmail.com")
-
-       expect(emailsSent.map(email=>email.mailTo)).toContain("mail@gmail.com")
-       
-       expect(emailService.sendMessage).toBeCalled()
+         expect(emailService.sendMessage).toBeCalled
    })
 
 

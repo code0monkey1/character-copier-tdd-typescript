@@ -17,8 +17,8 @@ class ResetPasswordUseCase{
      
       const emailMessage:EmailMessage={
        mailTo:emailAddress,
-       message:"Please reset your email password",
-       subject:"Password Reset"
+       message:"Whatever",
+       subject:"Hello"
 
       }
       
