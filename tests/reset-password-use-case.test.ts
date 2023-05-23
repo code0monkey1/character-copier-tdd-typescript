@@ -19,12 +19,12 @@ describe("Resent Password",()=>{
         //     )
         //    }
           
-        const emailService = createMockEmailService( email=>emailsSentTo.push(email))
+        const emailService:EmailService = createMockEmailService( email=>emailsSentTo.push(email))
       
         const sut = new ResetPasswordUseCase(emailService)
         
           //Act
-          sut.execute("mail@gmail.com")
+        sut.execute("mail@gmail.com")
         
           //Assert
          expect(emailsSentTo).toContain("mail@gmail.com")
