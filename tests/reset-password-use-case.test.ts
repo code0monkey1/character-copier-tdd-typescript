@@ -1,5 +1,5 @@
 import ResetPasswordUseCase from "../src/reset-password-use-case";
-import EmailServiceHelper from "./EmailServiceHelper";
+import EmailServiceHelper from "./helpers/EmailServiceHelper";
 
 describe("Resent Password",()=>{
     
@@ -13,7 +13,6 @@ describe("Resent Password",()=>{
      
        //Arrange
        const emailServiceHelper= new EmailServiceHelper()
-        
       
        const sut = new ResetPasswordUseCase(emailServiceHelper.getEmailService())
         

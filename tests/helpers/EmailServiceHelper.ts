@@ -1,4 +1,4 @@
-import { EmailService } from "../src/reset-password-use-case";
+import { EmailService } from "../../src/reset-password-use-case";
 
 class EmailServiceHelper{
       

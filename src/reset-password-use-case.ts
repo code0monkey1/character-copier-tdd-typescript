@@ -19,7 +19,6 @@ class ResetPasswordUseCase{
        mailTo:emailAddress,
        message:"Whatever",
        subject:"Hello"
-
       }
       
       this.emailService.sendMessage(emailMessage)
