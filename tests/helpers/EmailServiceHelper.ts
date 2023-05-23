@@ -10,16 +10,15 @@ class EmailServiceHelper{
           
           return{
 
-            sendMessage:jest.fn(
-               message=>captureFn(message.mailTo)
-            )
+                sendMessage:jest.fn(
+                 message=>captureFn(message.mailTo)
+                )
             }
 
       }
 
       public getSentEmails(){
-        
-           return this.emailsSentTo;
+          return this.emailsSentTo;
       }
 
       public getEmailService():EmailService{

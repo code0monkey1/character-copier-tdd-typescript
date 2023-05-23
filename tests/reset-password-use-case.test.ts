@@ -2,6 +2,16 @@ import ResetPasswordUseCase from "../src/reset-password-use-case";
 import EmailServiceHelper from "./helpers/EmailServiceHelper";
 
 describe("Resent Password",()=>{
+   
+   let emailServiceHelper = new EmailServiceHelper()
+   let resetPasswordUseCase = new ResetPasswordUseCase(emailServiceHelper.getEmailService())
+
+   beforeEach(()=>{
+
+    emailServiceHelper = new EmailServiceHelper()
+    resetPasswordUseCase = new ResetPasswordUseCase(emailServiceHelper.getEmailService())
+   
+   })
     
    test("Reset Password Use Case Exists",()=>{
        
@@ -11,10 +21,8 @@ describe("Resent Password",()=>{
 
    test("should sent message to correct email address",()=>{
      
-       //Arrange
-       const emailServiceHelper= new EmailServiceHelper()
-      
-       const sut = new ResetPasswordUseCase(emailServiceHelper.getEmailService())
+       //Arrange   
+       const sut = resetPasswordUseCase
         
        //Act
        sut.execute("mail@gmail.com")
