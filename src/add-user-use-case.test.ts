@@ -14,29 +14,33 @@ describe('add-user-use-case',()=>{
           emailAddress:"chiranjeev@gmail.com",
           userName:"Chiranjeev"
         }
-  
-        const emails:string[]=[]
 
-        class MockEmailService implements EmailService{
-
-          public  wasSendWelcomeLetterCalled:boolean=false;
-
-          sendWelcomeLetter(emailAddress: string): void {
-            this.wasSendWelcomeLetterCalled=true;
-            emails.push(emailAddress)
-          }
-          
-        }
-      
         const mockEmailService = new MockEmailService();
 
         const sut = new AddUserUseCase(mockEmailService)
         
         sut.execute(userRequest)
+
+        sut.execute({
+          emailAddress:"Crazy@gmail.com",
+          userName:"Veeru"
+        })
         
         expect(mockEmailService.wasSendWelcomeLetterCalled).toBeTruthy()
-        expect(emails.includes(userRequest.emailAddress))
-      
+        expect(mockEmailService.sentEmails).toContain("Crazy@gmail.com")
+        
       })
    })
 })
+
+
+        class MockEmailService implements EmailService{
+          public sentEmails:string[]=[]
+          public  wasSendWelcomeLetterCalled:boolean=false;
+
+          sendWelcomeLetter(emailAddress: string): void {
+            this.wasSendWelcomeLetterCalled=true;
+            this.sentEmails.push(emailAddress)
+          }
+          
+        }
