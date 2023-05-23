@@ -4,7 +4,7 @@ describe('add-user-use-case',()=>{
 
    describe('execute',()=>{
       
-      test('AddUserCuseCase does exist',()=>{
+      test('AddUserUseCase does exist',()=>{
 
         expect(AddUserUseCase).toBeInstanceOf(Function)
       })

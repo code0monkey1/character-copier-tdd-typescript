@@ -9,7 +9,7 @@ export interface EmailMessage{
 }
 
 
-export class ResetPasswordUseCase{
+class ResetPasswordUseCase{
 
     constructor(private readonly emailService:EmailService){}
     
@@ -25,3 +25,6 @@ export class ResetPasswordUseCase{
       this.emailService.sendMessage(emailMessage)
     }
 }
+
+
+export default ResetPasswordUseCase;
