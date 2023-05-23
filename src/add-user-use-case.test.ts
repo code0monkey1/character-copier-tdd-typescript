@@ -62,7 +62,7 @@ describe('add-user-use-case',()=>{
         })
 
         expect(sentWelcomeEmailAddresses).toContain("Crazy@gmail.com")
-        
+        expect(mockEmailService.sendWelcomeLetter).toBeCalledTimes(2)
       })
    })
 })
