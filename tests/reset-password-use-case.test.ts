@@ -13,12 +13,14 @@ describe("Resent Password",()=>{
        //Arrange
         const emailsSentTo:string[]=[]
         
-        const emailService:EmailService = {
-          sendMessage:jest.fn(
-            emailMessage=>emailsSentTo.push(emailMessage.mailTo)
-            )
-           }
+        // const emailService:EmailService = {
+        //   sendMessage:jest.fn(
+        //     emailMessage=>emailsSentTo.push(emailMessage.mailTo)
+        //     )
+        //    }
           
+        const emailService = createMockEmailService( email=>emailsSentTo.push(email))
+      
         const sut = new ResetPasswordUseCase(emailService)
         
           //Act
@@ -31,11 +33,11 @@ describe("Resent Password",()=>{
          expect(emailService.sendMessage).toBeCalled
    })
 
-   function createMockEmailService(captureFn:(email:string)=>void){
+   function createMockEmailService(captureFn:(email:string)=>void):EmailService{
           return{
 
             sendMessage:jest.fn(
-               emailMessage=>captureFn(emailMessage)
+               message=>captureFn(message.mailTo)
             )
           }
    }
