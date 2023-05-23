@@ -3,7 +3,6 @@ export interface AddUserRequest{
   userName:string
 }
 
-
 export interface EmailService{
    sendWelcomeLetter(emailAddress:string):void
 }
