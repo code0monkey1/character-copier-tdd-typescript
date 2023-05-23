@@ -1,4 +1,5 @@
-import ResetPasswordUseCase, { EmailService } from "../src/reset-password-use-case"
+import ResetPasswordUseCase from "../src/reset-password-use-case";
+import EmailServiceHelper from "./EmailServiceHelper";
 
 describe("Resent Password",()=>{
     
@@ -11,32 +12,21 @@ describe("Resent Password",()=>{
    test("should sent message to correct email address",()=>{
      
        //Arrange
-       const emailsSentTo:string[]=[]
-          
-       const emailService:EmailService = createMockEmailService( email=>emailsSentTo.push(email))
+       const emailServiceHelper= new EmailServiceHelper()
+        
       
-       const sut = new ResetPasswordUseCase(emailService)
+       const sut = new ResetPasswordUseCase(emailServiceHelper.getEmailService())
         
        //Act
        sut.execute("mail@gmail.com")
         
        //Assert
-       expect(emailsSentTo).toContain("mail@gmail.com")
+       expect(emailServiceHelper.getSentEmails()).toContain("mail@gmail.com")
 
-
-       expect(emailService.sendMessage).toBeCalled
+       expect(emailServiceHelper.getEmailService).toBeCalled
    })
-
-   function createMockEmailService(captureFn:(email:string)=>void):EmailService{
-          
-          return{
-
-            sendMessage:jest.fn(
-               message=>captureFn(message.mailTo)
-            )
-          }
-
-   }
 
 
 })
+
+ 
