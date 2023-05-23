@@ -11,11 +11,11 @@ describe("Resent Password",()=>{
    test("should sent message to correct email address",()=>{
      
        //Arrange
-        const emailsSent:EmailMessage[]=[]
+        const emailsSentTo:string[]=[]
         
         const emailService:EmailService = {
           sendMessage:jest.fn(
-            emailMessage=>emailsSent.push(emailMessage)
+            emailMessage=>emailsSentTo.push(emailMessage.mailTo)
             )
            }
           
@@ -25,7 +25,7 @@ describe("Resent Password",()=>{
           sut.execute("mail@gmail.com")
         
           //Assert
-         expect(emailsSent.map(email=>email.mailTo)).toContain("mail@gmail.com")
+         expect(emailsSentTo).toContain("mail@gmail.com")
 
 
          expect(emailService.sendMessage).toBeCalled
