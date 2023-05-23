@@ -31,5 +31,14 @@ describe("Resent Password",()=>{
          expect(emailService.sendMessage).toBeCalled
    })
 
+   function createMockEmailService(captureFn:(email:string)=>void){
+          return{
+
+            sendMessage:jest.fn(
+               emailMessage=>captureFn(emailMessage)
+            )
+          }
+   }
+
 
 })
