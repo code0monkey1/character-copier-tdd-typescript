@@ -28,7 +28,7 @@ describe("Resent Password",()=>{
        sut.execute("mail@gmail.com")
         
        //Assert
-       expect(emailServiceHelper.getSentEmails()).toContain("mail@gmail.com")
+       expect(emailServiceHelper.getEmailsSent()).toContain("mail@gmail.com")
 
        expect(emailServiceHelper.getEmailService).toBeCalled
    })

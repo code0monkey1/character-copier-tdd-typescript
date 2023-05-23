@@ -14,12 +14,11 @@ class EmailServiceHelper{
                  message=>captureFn(message.mailTo)
                 )
             }
-
       }
 
-      public getSentEmails(){
-          return this.emailsSentTo;
-      }
+       public  getEmailsSent(): string[] {
+            return this.emailsSentTo;
+        }
 
       public getEmailService():EmailService{
           return this.emailService;
