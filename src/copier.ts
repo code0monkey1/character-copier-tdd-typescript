@@ -13,19 +13,21 @@ class Copier{
 
    copy(){
      
-    let character='@'
+    let character=this.src.readChar()
    
-      do{
-        
-         const character=this.src.readChar()
-
-         if(character==='\n' || character==='')break;
-         
+    while(this.isNotNewLineOrEmpty(character)){
+      
          this.dest.writeChar(character)
-      }
-      while(character!=='\n');
+
+         character=this.src.readChar()
+    }
+   
   }
 
+
+  private isNotNewLineOrEmpty(character: string) {
+    return character !== '\n' && character !== ''
+  }
 }
 
 export interface Source{

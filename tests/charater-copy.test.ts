@@ -87,15 +87,15 @@ describe('character-copy',()=>{
                 
             //Act
             characterCopyHelper.readChars(chars);
+            // const sut = copier
 
-            const sut = copier
             //Act
-            sut.copy()
+            // sut.copy()
               
              //Assert
             expect(charWriter).toBeCalledTimes(chars.length)
 
-             expect(charWriter).toHaveBeenCalledTimes(0)
+            expect(charWriter).toHaveBeenCalledTimes(0)
   
           })
 
