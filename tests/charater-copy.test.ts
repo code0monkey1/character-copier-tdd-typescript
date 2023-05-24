@@ -106,7 +106,7 @@ describe('character-copy',()=>{
           ])('chars: $chars is returned',({chars})=>{
              
             //Arrange
-            const destination= characterCopyHelper.getDestination()            
+            const destination= copier.destination           
                 
             //Act
             characterCopyHelper.createSource(chars);
