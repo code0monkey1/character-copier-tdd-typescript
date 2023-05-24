@@ -3,8 +3,17 @@ import { Destination, Source } from "./copier";
 class CharacterCopyHelper{
 
     private mockWriteChar= jest.fn();
-  
+    private mockReadChar= jest.fn();
 
+
+    public getSource():Source{
+      
+        return {
+
+              readChar:this.mockReadChar
+            
+          }
+    }
 
     public getDestination():Destination{
             
@@ -17,17 +26,11 @@ class CharacterCopyHelper{
      }
 
      public createSource(chars:string[]){
-
-      const mockReadChar= jest.fn();
      
-      chars.forEach(char => mockReadChar.mockReturnValueOnce(char));
+      chars.forEach(char => this.mockReadChar.mockReturnValueOnce(char));
   
-      return {
-
-              readChar:mockReadChar
-            
-          }
-
+      this.mockReadChar.mockReturnValue('\n')
+      
      }
 
      public getMockWriteChar(){

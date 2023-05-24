@@ -1,5 +1,5 @@
 import CharacterCopyHelper from '../src/CharacterCopyHelper';
-import Copier, { Destination, Source } from '../src/copier';
+import Copier from '../src/copier';
 
 describe('character-copy',()=>{
     
@@ -33,7 +33,7 @@ describe('character-copy',()=>{
             const sut = copier
             
             //Act
-            characterCopyHelper.readChars([char])
+            characterCopyHelper.createSource([char])
             
             sut.copy()
           
@@ -58,7 +58,7 @@ describe('character-copy',()=>{
             const charWriter= characterCopyHelper.getMockWriteChar()        
                 
             //Act
-            characterCopyHelper.readChars(chars);
+            characterCopyHelper.createSource(chars);
 
             const sut = copier
             //Act
@@ -87,11 +87,11 @@ describe('character-copy',()=>{
             const charWriter= characterCopyHelper.getMockWriteChar()        
                 
             //Act
-            characterCopyHelper.readChars([chars]);
-            // const sut = copier
+            characterCopyHelper.createSource([chars]);
+            const sut = copier
 
             //Act
-            // sut.copy()
+            sut.copy()
               
              //Assert
             expect(charWriter).toBeCalledTimes(chars.length)
@@ -105,16 +105,16 @@ describe('character-copy',()=>{
       describe('no characters after new line are written',()=>{
         
       test.each([
-              {chars:'a\ncd'},
-              {chars:'today\nrw'},
-              {chars:'fun\nparty'}
+              {chars:['a','\n','c','d']},
+              {chars:['t','o','d','a','y','\n','r','w']},
+              {chars:['f','u','n','\n','p','a','r','t','y']}
           ])('chars: $chars is returned',({chars})=>{
              
             //Arrange
             const charWriter= characterCopyHelper.getMockWriteChar()        
                 
             //Act
-            characterCopyHelper.readChars(chars.split(''));
+            characterCopyHelper.createSource(chars);
             const sut = copier
 
             //Act
@@ -126,7 +126,6 @@ describe('character-copy',()=>{
           
             chars
             .slice(chars.indexOf('\n'))
-            .split('')
             .map(char => expect(charWriter).not.toHaveBeenCalledWith(char))
   
           })
