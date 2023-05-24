@@ -14,7 +14,7 @@ class Copier{
    copy(){
      
     let character=''
-
+   
       do{
         
          const character=this.src.readChar()

@@ -48,9 +48,9 @@ describe('character-copy',()=>{
     describe('multiple characters with newline',()=>{
         
       test.each([
-              {chars:['a','b']},
-              {chars:['c','d']},
-              {chars:['e','f']}
+              {chars:'ab'},
+              {chars:'cd'},
+              {chars:'ef'}
           ])('chars: $chars is returned',({chars})=>{
              
                  //Arrange
@@ -66,7 +66,7 @@ describe('character-copy',()=>{
              //Assert
             expect(charWriter).toBeCalledTimes(chars.length)
 
-            chars.forEach( char =>{
+            chars.split('').forEach( char =>{
                         expect(charWriter).toHaveBeenCalledWith(char)
              })
   
@@ -95,9 +95,6 @@ describe('character-copy',()=>{
              //Assert
             expect(charWriter).toBeCalledTimes(chars.length)
 
-            chars.split('').forEach( char =>{
-                        expect(charWriter).toHaveBeenCalledWith(char)
-             })
              expect(charWriter).toHaveBeenCalledTimes(0)
   
           })
