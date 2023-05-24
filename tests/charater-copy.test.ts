@@ -35,7 +35,7 @@ describe('character-copy',()=>{
           
             //Assert
             expect(copier.destination.writeChar).toBeCalledTimes(1)
-            expect(characterCopyHelper.getWrittenChars()).toEqual([char])
+            expect(characterCopyHelper.getWrittenChars()).toStrictEqual([char])
       })
 
     })
@@ -63,7 +63,7 @@ describe('character-copy',()=>{
             // expect(destination.writeChar).toBeCalledTimes(chars.length)
 
            expect(destination.writeChar).toBeCalledTimes(chars.length)
-           expect(characterCopyHelper.getWrittenChars()).toEqual(chars)
+           expect(characterCopyHelper.getWrittenChars()).toStrictEqual(chars)
    
   
           })
@@ -100,9 +100,11 @@ describe('character-copy',()=>{
       describe('no characters after new line are written',()=>{
         
       test.each([
+        
               {chars:['a','\n','c','d']},
               {chars:['t','o','d','a','y','\n','r','w']},
               {chars:['f','u','n','\n','p','a','r','t','y']}
+
           ])('chars: $chars is returned',({chars})=>{
              
             //Arrange
@@ -116,8 +118,8 @@ describe('character-copy',()=>{
             sut.copy()
               
              //Assert
-            expect(destination.writeChar)
-            .toBeCalledTimes(chars.slice(0,chars.indexOf('\n')).length)
+            expect(characterCopyHelper.getWrittenChars())
+            .toStrictEqual(chars.slice(0,chars.indexOf('\n')))
           
             chars
             .slice(chars.indexOf('\n'))
