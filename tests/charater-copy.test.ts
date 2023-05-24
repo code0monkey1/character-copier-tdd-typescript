@@ -110,7 +110,7 @@ describe('character-copy',()=>{
               {chars:'fun\nparty'}
           ])('chars: $chars is returned',({chars})=>{
              
-                 //Arrange
+            //Arrange
             const charWriter= characterCopyHelper.getMockWriteChar()        
                 
             //Act
@@ -123,8 +123,11 @@ describe('character-copy',()=>{
              //Assert
             expect(charWriter)
             .toBeCalledTimes(chars.slice(0,chars.indexOf('\n')).length)
-
-            // expect(charWriter).toHaveBeenCalledTimes(0)
+          
+            chars
+            .slice(chars.indexOf('\n'))
+            .split('')
+            .map(char => expect(charWriter).not.toHaveBeenCalledWith(char))
   
           })
 
