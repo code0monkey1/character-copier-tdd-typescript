@@ -22,7 +22,6 @@ class CharacterCopyHelper{
               writeChar:this.mockWriteChar
 
             } 
-
      }
 
      public createSource(chars:string[]){
