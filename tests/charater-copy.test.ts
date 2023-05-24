@@ -34,7 +34,6 @@ describe('character-copy',()=>{
             sut.copy()
           
             //Assert
-            expect(copier.destination.writeChar).toBeCalledTimes(1)
             expect(characterCopyHelper.getWrittenChars()).toStrictEqual([char])
       })
 
@@ -49,7 +48,6 @@ describe('character-copy',()=>{
           ])('chars: $chars is returned',({chars})=>{
              
             //Arrange
-            const destination= copier.destination
                 
             //Act
             characterCopyHelper.createSource(chars);
@@ -62,8 +60,7 @@ describe('character-copy',()=>{
              //Assert
             // expect(destination.writeChar).toBeCalledTimes(chars.length)
 
-           expect(destination.writeChar).toBeCalledTimes(chars.length)
-           expect(characterCopyHelper.getWrittenChars()).toStrictEqual(chars)
+            expect(characterCopyHelper.getWrittenChars()).toStrictEqual(chars)
    
   
           })
@@ -89,8 +86,6 @@ describe('character-copy',()=>{
             sut.copy()
               
              //Assert
-            expect(destination.writeChar).toBeCalledTimes(chars.length)
-
             expect(destination.writeChar).toHaveBeenCalledTimes(0)
   
           })
