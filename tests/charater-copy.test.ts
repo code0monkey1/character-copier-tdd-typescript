@@ -28,7 +28,7 @@ describe('character-copy',()=>{
         ])('char: $char is returned',({char})=>{
       
             //Arrange
-            const mockWriteChar= characterCopyHelper.getMockWriteChar()        
+            const charWriter= characterCopyHelper.getMockWriteChar()        
 
             const sut = copier
             
@@ -38,10 +38,9 @@ describe('character-copy',()=>{
             sut.copy()
           
             //Assert
-            expect(mockWriteChar).toBeCalledTimes(1)
+            expect(charWriter).toBeCalledTimes(1)
             
-            expect(mockWriteChar).toHaveBeenCalledWith(char)
-        
+            expect(charWriter).toHaveBeenCalledWith(char)
           
       })
 
