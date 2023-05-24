@@ -50,7 +50,8 @@ describe('character-copy',()=>{
       test.each([
               {chars:'ab'},
               {chars:'cd'},
-              {chars:'ef'}
+              {chars:'ef'},
+              {chars:'a,bhdr*%$#'}
           ])('chars: $chars is returned',({chars})=>{
              
                  //Arrange
