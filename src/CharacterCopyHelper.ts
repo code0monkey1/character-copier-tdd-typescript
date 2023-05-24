@@ -25,5 +25,10 @@ class CharacterCopyHelper{
 
      }
 
+     public readCharsArray(arr:string[]){
+
+
+     }
+
 
 }
