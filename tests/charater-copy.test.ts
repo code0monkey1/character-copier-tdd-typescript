@@ -62,7 +62,6 @@ describe('character-copy',()=>{
 
             expect(characterCopyHelper.getWrittenChars()).toStrictEqual(chars)
    
-  
           })
 
      })
@@ -75,7 +74,7 @@ describe('character-copy',()=>{
               {chars:''}
           ])('chars: $chars is returned',({chars})=>{
              
-                 //Arrange
+            //Arrange
             const destination= characterCopyHelper.getDestination()        
                 
             //Act
@@ -96,16 +95,22 @@ describe('character-copy',()=>{
         
       test.each([
         
-              {chars:['a','\n','c','d']},
-              {chars:['t','o','d','a','y','\n','r','w']},
-              {chars:['f','u','n','\n','p','a','r','t','y']}
+              {
+                chars:['a','\n','c','d'],
+                expected:['a']
+              },
+              { 
+                chars:['t','o','d','a','y','\n','r','w'],
+                expected:['t','o','d','a','y']
+              },
+              {
+                chars:['f','u','n','\n','p','a','r','t','y'],
+                expected:['f','u','n']
+              }
 
-          ])('chars: $chars is returned',({chars})=>{
+          ])('chars: $chars returns $expected',({chars,expected})=>{
              
-            //Arrange
-            const destination= copier.destination           
-                
-            //Act
+            //Arrange       
             characterCopyHelper.createSource(chars);
             const sut = copier
 
@@ -114,12 +119,8 @@ describe('character-copy',()=>{
               
              //Assert
             expect(characterCopyHelper.getWrittenChars())
-            .toStrictEqual(chars.slice(0,chars.indexOf('\n')))
-          
-            chars
-            .slice(chars.indexOf('\n'))
-            .map(char => expect(destination.writeChar).not.toHaveBeenCalledWith(char))
-  
+            .toStrictEqual(expected)
+        
           })
 
      })
