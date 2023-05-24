@@ -13,13 +13,13 @@ class Copier{
 
    copy(){
      
-    let character=this.src.readChar()
+    let char=this.src.readChar()
    
-    while(this.isNotNewLineOrEmpty(character)){
+    while(this.isNotNewLineOrEmpty(char)){
       
-         this.dest.writeChar(character)
+         this.dest.writeChar(char)
 
-         character=this.src.readChar()
+         char=this.src.readChar()
     }
    
   }
