@@ -15,7 +15,7 @@ describe("Resent Password",()=>{
     
    test("Reset Password Use Case Exists",()=>{
        
-      expect(ResetPasswordUseCase).toBeInstanceOf(Function)
+      expect(ResetPasswordUseCase).toBeInstanceOf(Function);
        
    })
 

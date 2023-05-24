@@ -11,16 +11,31 @@ class Copier{
     return this.dest
   }
 
+   copy(){
+     
+    let character=''
+
+      do{
+        
+         const character=this.src.readChar()
+
+         if(character==='\n')break;
+         
+         this.dest.writeChar(character)
+      }
+      while(character!=='\n');
+  }
+
 }
 
-interface Source{
+export interface Source{
      
     readChar:()=>string;
 }
 
-interface Destination{
+export interface Destination{
 
-    writeChar:()=>string;
+    writeChar:(c:string)=>void;
 
 }
 
