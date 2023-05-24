@@ -68,9 +68,8 @@ describe('character-copy',()=>{
 
             chars.forEach( char =>{
                         expect(charWriter).toHaveBeenCalledWith(char)
-            })
+             })
   
-            
           })
 
      })
