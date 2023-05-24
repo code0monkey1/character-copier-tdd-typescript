@@ -102,6 +102,34 @@ describe('character-copy',()=>{
 
      })
 
+      describe('no characters after new line are written',()=>{
+        
+      test.each([
+              {chars:'a\ncd'},
+              {chars:'today\nrw'},
+              {chars:'fun\nparty'}
+          ])('chars: $chars is returned',({chars})=>{
+             
+                 //Arrange
+            const charWriter= characterCopyHelper.getMockWriteChar()        
+                
+            //Act
+            characterCopyHelper.readChars(chars);
+            const sut = copier
+
+            //Act
+            sut.copy()
+              
+             //Assert
+            expect(charWriter)
+            .toBeCalledTimes(chars.slice(0,chars.indexOf('\n')).length)
+
+            // expect(charWriter).toHaveBeenCalledTimes(0)
+  
+          })
+
+     })
+
 
 
 })
