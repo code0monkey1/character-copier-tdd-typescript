@@ -25,9 +25,7 @@ describe('character-copy',()=>{
             {char:'c'}
         ])('char: $char is returned',({char})=>{
       
-            //Arrange
-            const destination= characterCopyHelper.getDestination()    
-
+            //Arrange 
             const sut = copier
             
             //Act
@@ -41,7 +39,7 @@ describe('character-copy',()=>{
             // expect(destination.writeChar).toHaveBeenCalledWith(char)
 
             expect(copier.destination.writeChar).toBeCalledTimes(1)
-          
+            expect(characterCopyHelper.getWrittenChars()).toContainEqual([char])
       })
 
     })
