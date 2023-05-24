@@ -24,7 +24,6 @@ class Copier{
    
   }
 
-
   private isNotNewLineOrEmpty(character: string) {
     return character !== '\n' && character !== ''
   }

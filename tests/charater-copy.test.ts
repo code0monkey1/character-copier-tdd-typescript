@@ -33,7 +33,7 @@ describe('character-copy',()=>{
             const sut = copier
             
             //Act
-            characterCopyHelper.readChars(char)
+            characterCopyHelper.readChars([char])
             
             sut.copy()
           
@@ -48,10 +48,10 @@ describe('character-copy',()=>{
     describe('multiple characters with newline',()=>{
         
       test.each([
-              {chars:'ab'},
-              {chars:'cd'},
-              {chars:'ef'},
-              {chars:'a,bhdr*%$#'}
+              {chars:['a','b']},
+              {chars:['c','d']},
+              {chars:['e','f']},
+              {chars:['a','b','h','d','r','*','%','$','#']}
           ])('chars: $chars is returned',({chars})=>{
              
                  //Arrange
@@ -67,7 +67,7 @@ describe('character-copy',()=>{
              //Assert
             expect(charWriter).toBeCalledTimes(chars.length)
 
-            chars.split('').forEach( char =>{
+            chars.forEach( char =>{
                         expect(charWriter).toHaveBeenCalledWith(char)
              })
   
@@ -87,7 +87,7 @@ describe('character-copy',()=>{
             const charWriter= characterCopyHelper.getMockWriteChar()        
                 
             //Act
-            characterCopyHelper.readChars(chars);
+            characterCopyHelper.readChars([chars]);
             // const sut = copier
 
             //Act
@@ -114,7 +114,7 @@ describe('character-copy',()=>{
             const charWriter= characterCopyHelper.getMockWriteChar()        
                 
             //Act
-            characterCopyHelper.readChars(chars);
+            characterCopyHelper.readChars(chars.split(''));
             const sut = copier
 
             //Act
