@@ -13,13 +13,13 @@ class Copier{
 
    copy(){
      
-    let character=''
+    let character='@'
    
       do{
         
          const character=this.src.readChar()
 
-         if(character==='\n')break;
+         if(character==='\n' || character==='')break;
          
          this.dest.writeChar(character)
       }
