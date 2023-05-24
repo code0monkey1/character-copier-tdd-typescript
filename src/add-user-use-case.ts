@@ -11,7 +11,7 @@ export class AddUserUseCase{
    constructor(private emailService:EmailService){}
 
    public execute(addUserRequest:AddUserRequest){
-    // check if userName is avialbable 
+    // check if userName is available 
     // check if email address is available
     // add user
 
