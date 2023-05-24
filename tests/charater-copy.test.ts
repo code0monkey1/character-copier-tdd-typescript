@@ -1,8 +1,18 @@
-import Copier, { Destination, Source } from '../src/copier'
+import CharacterCopyHelper from '../src/CharacterCopyHelper';
+import Copier, { Destination, Source } from '../src/copier';
 
 describe('character-copy',()=>{
+    let characterCopyHelper=new CharacterCopyHelper();
+    
+    beforeEach(()=>{
+
+      characterCopyHelper=new CharacterCopyHelper();
+
+    })
    
   describe('copy',()=>{
+
+
        
     describe('one character with newline',()=>{
 
@@ -14,21 +24,11 @@ describe('character-copy',()=>{
         ])('char: $char is returned',({char})=>{
       
             //Arrange
-            const mockWriteChar= jest.fn()
-                                    
-            const mockReadChar= jest.fn()
-                                    .mockReturnValueOnce(char)
-                                    .mockReturnValue('\n')
-
-            const src:Source ={
-              readChar:mockReadChar
-            }
-
-            const destination:Destination = { 
-              writeChar:mockWriteChar
-            } 
-
-            const sut = new Copier(src,destination)
+            const mockWriteChar= characterCopyHelper.getMockWriteChar()
+            
+            characterCopyHelper.readChars(char)
+         
+            const sut = new Copier(characterCopyHelper.getSource(),characterCopyHelper.getDestination())
             //Act
             sut.copy()
           
