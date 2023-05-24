@@ -34,12 +34,8 @@ describe('character-copy',()=>{
             sut.copy()
           
             //Assert
-            // expect(destination.writeChar).toBeCalledTimes(1)
-            
-            // expect(destination.writeChar).toHaveBeenCalledWith(char)
-
             expect(copier.destination.writeChar).toBeCalledTimes(1)
-            expect(characterCopyHelper.getWrittenChars()).toContainEqual([char])
+            expect(characterCopyHelper.getWrittenChars()).toEqual([char])
       })
 
     })
@@ -52,22 +48,23 @@ describe('character-copy',()=>{
               {chars:['a','b','h','d','r','*','%','$','#']}
           ])('chars: $chars is returned',({chars})=>{
              
-                 //Arrange
-            const destination= characterCopyHelper.getDestination()
+            //Arrange
+            const destination= copier.destination
                 
             //Act
             characterCopyHelper.createSource(chars);
 
             const sut = copier
+            
             //Act
-              sut.copy()
+            sut.copy()
               
              //Assert
-            expect(destination.writeChar).toBeCalledTimes(chars.length)
+            // expect(destination.writeChar).toBeCalledTimes(chars.length)
 
-            chars.forEach( char =>{
-                        expect(destination.writeChar).toHaveBeenCalledWith(char)
-             })
+           expect(destination.writeChar).toBeCalledTimes(chars.length)
+           expect(characterCopyHelper.getWrittenChars()).toEqual(chars)
+   
   
           })
 
