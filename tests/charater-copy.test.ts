@@ -2,18 +2,22 @@ import CharacterCopyHelper from '../src/CharacterCopyHelper';
 import Copier, { Destination, Source } from '../src/copier';
 
 describe('character-copy',()=>{
-    let characterCopyHelper=new CharacterCopyHelper();
     
+    let characterCopyHelper=new CharacterCopyHelper();
+    let copier = new Copier(characterCopyHelper.getSource(),characterCopyHelper.getDestination());
+
     beforeEach(()=>{
 
-      characterCopyHelper=new CharacterCopyHelper();
+     characterCopyHelper=new CharacterCopyHelper();
+
+     copier = new Copier(characterCopyHelper.getSource(),characterCopyHelper.getDestination())
+    
 
     })
    
   describe('copy',()=>{
 
 
-       
     describe('one character with newline',()=>{
 
           test
@@ -24,15 +28,16 @@ describe('character-copy',()=>{
         ])('char: $char is returned',({char})=>{
       
             //Arrange
-            const mockWriteChar= characterCopyHelper.getMockWriteChar()
+            const mockWriteChar= characterCopyHelper.getMockWriteChar()        
+
+            const sut = copier
             
-            characterCopyHelper.readChars(char)
-         
-            const sut = new Copier(characterCopyHelper.getSource(),characterCopyHelper.getDestination())
             //Act
+            characterCopyHelper.readChars(char)
+            
             sut.copy()
           
-              //Assert
+            //Assert
             expect(mockWriteChar).toBeCalledTimes(1)
             
             expect(mockWriteChar).toHaveBeenCalledWith(char)
