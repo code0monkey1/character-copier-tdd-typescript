@@ -73,9 +73,12 @@ describe('character-copy',()=>{
             sut.copy()
             
               //Assert
-            //expect(mockWriteChar).toBeCalledTimes(2)
-            expect(mockWriteChar).toHaveBeenCalledWith(chars[0])
-            expect(mockWriteChar).toHaveBeenCalledWith(chars[1])
+          expect(mockWriteChar).toBeCalledTimes(chars.length)
+
+          chars.forEach( char =>{
+                      expect(mockWriteChar).toHaveBeenCalledWith(char)
+          })
+  
             
           })
 
