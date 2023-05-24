@@ -74,6 +74,37 @@ describe('character-copy',()=>{
 
      })
 
+     describe('no characters with newline',()=>{
+        
+      test.each([
+              {chars:''},
+              {chars:''},
+              {chars:''}
+          ])('chars: $chars is returned',({chars})=>{
+             
+                 //Arrange
+            const charWriter= characterCopyHelper.getMockWriteChar()        
+                
+            //Act
+            characterCopyHelper.readChars(chars);
+
+            const sut = copier
+            //Act
+            sut.copy()
+              
+             //Assert
+            expect(charWriter).toBeCalledTimes(chars.length)
+
+            chars.split('').forEach( char =>{
+                        expect(charWriter).toHaveBeenCalledWith(char)
+             })
+             expect(charWriter).toHaveBeenCalledTimes(0)
+  
+          })
+
+     })
+
+
 
 })
 
