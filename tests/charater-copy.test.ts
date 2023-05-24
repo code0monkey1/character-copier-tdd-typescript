@@ -11,12 +11,10 @@ describe('character-copy',()=>{
      characterCopyHelper=new CharacterCopyHelper();
 
      copier = new Copier(characterCopyHelper.getSource(),characterCopyHelper.getDestination())
-    
-
+  
     })
    
   describe('copy',()=>{
-
 
     describe('one character with newline',()=>{
 
@@ -28,7 +26,7 @@ describe('character-copy',()=>{
         ])('char: $char is returned',({char})=>{
       
             //Arrange
-            const charWriter= characterCopyHelper.getMockWriteChar()        
+            const destination= characterCopyHelper.getDestination()    
 
             const sut = copier
             
@@ -38,9 +36,9 @@ describe('character-copy',()=>{
             sut.copy()
           
             //Assert
-            expect(charWriter).toBeCalledTimes(1)
+            expect(destination.writeChar).toBeCalledTimes(1)
             
-            expect(charWriter).toHaveBeenCalledWith(char)
+            expect(destination.writeChar).toHaveBeenCalledWith(char)
           
       })
 
@@ -55,7 +53,7 @@ describe('character-copy',()=>{
           ])('chars: $chars is returned',({chars})=>{
              
                  //Arrange
-            const charWriter= characterCopyHelper.getMockWriteChar()        
+            const destination= characterCopyHelper.getDestination()
                 
             //Act
             characterCopyHelper.createSource(chars);
@@ -65,10 +63,10 @@ describe('character-copy',()=>{
               sut.copy()
               
              //Assert
-            expect(charWriter).toBeCalledTimes(chars.length)
+            expect(destination.writeChar).toBeCalledTimes(chars.length)
 
             chars.forEach( char =>{
-                        expect(charWriter).toHaveBeenCalledWith(char)
+                        expect(destination.writeChar).toHaveBeenCalledWith(char)
              })
   
           })
@@ -84,7 +82,7 @@ describe('character-copy',()=>{
           ])('chars: $chars is returned',({chars})=>{
              
                  //Arrange
-            const charWriter= characterCopyHelper.getMockWriteChar()        
+            const destination= characterCopyHelper.getDestination()        
                 
             //Act
             characterCopyHelper.createSource([chars]);
@@ -94,9 +92,9 @@ describe('character-copy',()=>{
             sut.copy()
               
              //Assert
-            expect(charWriter).toBeCalledTimes(chars.length)
+            expect(destination.writeChar).toBeCalledTimes(chars.length)
 
-            expect(charWriter).toHaveBeenCalledTimes(0)
+            expect(destination.writeChar).toHaveBeenCalledTimes(0)
   
           })
 
@@ -111,7 +109,7 @@ describe('character-copy',()=>{
           ])('chars: $chars is returned',({chars})=>{
              
             //Arrange
-            const charWriter= characterCopyHelper.getMockWriteChar()        
+            const destination= characterCopyHelper.getDestination()            
                 
             //Act
             characterCopyHelper.createSource(chars);
@@ -121,12 +119,12 @@ describe('character-copy',()=>{
             sut.copy()
               
              //Assert
-            expect(charWriter)
+            expect(destination.writeChar)
             .toBeCalledTimes(chars.slice(0,chars.indexOf('\n')).length)
           
             chars
             .slice(chars.indexOf('\n'))
-            .map(char => expect(charWriter).not.toHaveBeenCalledWith(char))
+            .map(char => expect(destination.writeChar).not.toHaveBeenCalledWith(char))
   
           })
 

@@ -33,10 +33,6 @@ class CharacterCopyHelper{
       
      }
 
-     public getMockWriteChar(){
-        return this.mockWriteChar;
-     }
-
 }
 
 export default CharacterCopyHelper;
