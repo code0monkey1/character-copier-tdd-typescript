@@ -2,9 +2,12 @@ import { Destination, Source } from "./copier";
 
 class CharacterCopyHelper{
 
-    private mockWriteChar= jest.fn();
     private mockReadChar= jest.fn();
+    private writtenChars:string[]=[]
 
+    public getWrittenChars(){
+        return  this.writtenChars
+    }
 
     public getSource():Source{
       
@@ -16,10 +19,10 @@ class CharacterCopyHelper{
     }
 
     public getDestination():Destination{
-            
+
          return { 
            
-              writeChar:this.mockWriteChar
+              writeChar:jest.fn((c)=>this.writtenChars.push(c))
 
             } 
      }
