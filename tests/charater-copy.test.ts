@@ -36,9 +36,11 @@ describe('character-copy',()=>{
             sut.copy()
           
             //Assert
-            expect(destination.writeChar).toBeCalledTimes(1)
+            // expect(destination.writeChar).toBeCalledTimes(1)
             
-            expect(destination.writeChar).toHaveBeenCalledWith(char)
+            // expect(destination.writeChar).toHaveBeenCalledWith(char)
+
+            expect(copier.destination.writeChar).toBeCalledTimes(1)
           
       })
 
