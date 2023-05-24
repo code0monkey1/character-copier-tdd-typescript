@@ -54,34 +54,21 @@ describe('character-copy',()=>{
           ])('chars: $chars is returned',({chars})=>{
              
                  //Arrange
-            const mockWriteChar= jest.fn()
-
-            const mockReadChar= jest.fn()
-
-            chars.forEach(char => {
-              mockReadChar.mockReturnValueOnce(char)
-            });
-  
-            mockReadChar.mockReturnValue('\n')
-
-            const src:Source ={
-              readChar:mockReadChar
-            }
-
-            const destination:Destination = { 
-              writeChar:mockWriteChar
-            } 
-
-            const sut = new Copier(src,destination)
+            const charWriter= characterCopyHelper.getMockWriteChar()        
+                
             //Act
-            sut.copy()
-            
-              //Assert
-          expect(mockWriteChar).toBeCalledTimes(chars.length)
+            characterCopyHelper.readChars(chars);
 
-          chars.forEach( char =>{
-                      expect(mockWriteChar).toHaveBeenCalledWith(char)
-          })
+            const sut = copier
+            //Act
+              sut.copy()
+              
+             //Assert
+            expect(charWriter).toBeCalledTimes(chars.length)
+
+            chars.forEach( char =>{
+                        expect(charWriter).toHaveBeenCalledWith(char)
+            })
   
             
           })
