@@ -27,21 +27,15 @@ class CharacterCopyHelper{
 
      public readChars(chars:string[]){
      
-         chars.forEach(char => {
-              this.mockReadChar.mockReturnValueOnce(char)
-            });
+      chars.forEach(char => this.mockReadChar.mockReturnValueOnce(char));
   
-            this.mockReadChar.mockReturnValue('\n')
+      this.mockReadChar.mockReturnValue('\n')
+      
      }
 
      public getMockWriteChar(){
         return this.mockWriteChar;
      }
-
-      public getMockReadChar(){
-        return this.mockReadChar;
-     }
-
 
 }
 
