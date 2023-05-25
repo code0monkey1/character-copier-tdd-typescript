@@ -1,11 +1,18 @@
-import { AddUserUseCase, EmailService } from "../src/add-user-use-case"
+import { AddUserUseCase, EmailService } from "../src/add-user-use-case";
 
+        
 describe('add-user-use-case',()=>{
-  
-  
+
 
    describe('execute',()=>{
-      
+        
+   let mockEmailService=new MockEmailService()
+   let addUserUseCase = new AddUserUseCase(mockEmailService)
+
+  beforeEach(()=>{
+   mockEmailService=new MockEmailService()
+   addUserUseCase = new AddUserUseCase(mockEmailService)
+  })
       test('AddUserUseCase does exist',()=>{
 
         expect(AddUserUseCase).toBeInstanceOf(Function)
@@ -17,9 +24,9 @@ describe('add-user-use-case',()=>{
           userName:"Chiranjeev"
         }
 
-        const mockEmailService = new MockEmailService();
+        // const mockEmailService = new MockEmailService();
 
-        const sut = new AddUserUseCase(mockEmailService)
+        const sut = addUserUseCase
         
         sut.execute(userRequest)
 
