@@ -120,6 +120,8 @@ describe('character-copy',()=>{
              //Assert
             expect(characterCopyHelper.getWrittenChars())
             .toStrictEqual(expected)
+
+     
         
           })
 
